@@ -47,12 +47,24 @@ function translatePigLatin(original)
 
 function stepConsonant(word)
 {
-  //var boolIsY = isY(word.charAt(0));
+
   var vowel = findSeperationVowel(word);
   console.log(vowel)
   var modifiedWords = word.split(vowel);
+
+  var shiftCharacters = modifiedWords.shift();
+  modifiedWords.unshift(" ");
   console.log(modifiedWords);
-  return word;
+  var tempString = modifiedWords.pop();
+  console.log(modifiedWords);
+  tempString += (shiftCharacters + "ay");
+  modifiedWords.push(tempString);
+  console.log(modifiedWords);
+
+
+  var modifiedWord = modifiedWords.join(vowel);
+  console.log(modifiedWord);
+  return modifiedWord;
 }
 
 
