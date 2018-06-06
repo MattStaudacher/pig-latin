@@ -27,6 +27,29 @@ function translatePigLatin(original)
 function stepConsonant(word)
 {
   //var boolIsY = isY(word.charAt(0));
+
+
+  if(isConsonant(word.charAt(0)))
+  {
+    var wordLength = word.length;
+    var vowels = ["a","e","i","o","u","y"];
+    character = character.toLowerCase();
+    var seperator = wordLength;
+    var charaterSeperator = "";
+    vowels.forEach(function(vowel)
+    {
+      var index = word.indexOf(vowel);
+      if(index <= seperator)
+      {
+        seperator = index;
+        charaterSeperator = vowel;
+      }
+    });
+  }
+  else
+  {
+    return word;
+  }
 }
 
 function stepVowel(word)
