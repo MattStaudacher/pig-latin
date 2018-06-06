@@ -21,17 +21,17 @@ function translatePigLatin(original)
     var word = originWords[index];
     var firstCharacter = word.charAt(0).toString();
 
-    console.log("Character: "+firstCharacter);
+    // console.log("Character: "+firstCharacter);
     if(isVowel(firstCharacter))
     {
       //Beginning character of word is a vowel run function stepVowel
-      console.log("Vowel Branch: " + word);
+      // console.log("Vowel Branch: " + word);
       word = stepVowel(word);
     }
     else if(isConsonent(firstCharacter)||isY(firstCharacter))
     {
       //Beginning character of word is a consonant run function stepConsonant
-      console.log("Consonant Branch: " + word);
+      // console.log("Consonant Branch: " + word);
       word = stepConsonant(word);
     }
     else {
