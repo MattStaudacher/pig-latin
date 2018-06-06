@@ -18,15 +18,16 @@ function translatePigLatin(original)
   var originWords = original.split(" ");
   for(var index = 0; index < originWords.length; index++)
   {
-    originWords[index] = modifyWord(originWords[index]);
+    originWords[index] = stepVowel(originWords[index]);
   }
   var output = originWords.join(" ");
   return output;
 }
 
-function modifyWord(word)
+
+
+function stepVowel(word)
 {
-  //var originlength = word.length;
   if(isVowel(word.charAt(0)))
   {
     return (word += "way");
