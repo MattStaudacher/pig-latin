@@ -1,0 +1,12 @@
+body  {
+  background-color: lightcyan;
+  font-size: 1.5em;
+}
+
+.btn-col-azure  {
+  background-color: azure;
+}
+
+.modifier {
+  padding: 8px;
+}
