@@ -29,6 +29,27 @@ If the first consonants include "qu", move the "u" along with the "q". Don't for
 
 For words beginning with "y", treat "y" as a consonant.
 
+## Specifications Outline:
+
+1. if word begins with vowel append "way" to the end of the word
+2. Check if word begins with a "y" and if so treat the "y" as if it is a consonant (include check with step 3)
+3. If word begins with 1 or more consonant move all consecutive consonants to the end and append "ay"
+  1. if firsts consonants include "qu" move "u" with the "q"
+
+  To get you started, below are the first two "plain English" specs:
+
+## Example Output
+
+The program does nothing to non-alphabetical characters, since they do not contain consonants or vowels.
+
+* Example Input: 3
+* Example Output: 3
+
+The program adds "ay" to single-letter words beginning with a vowel.
+
+* Example Input: i
+* Example Output: iay
+
 ## Technology Used
 
 HTML, CSS, Javascript, jQuery, arrays
