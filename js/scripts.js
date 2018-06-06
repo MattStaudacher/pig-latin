@@ -6,42 +6,57 @@ $(function(){
   });
 });
 
+//Front End
 function outputAnswer(tempString)
 {
   $("#output").text(tempString);
 }
 
+//Back End
 function translatePigLatin(original)
 {
-  var originWordsArray = original.split(" ");
-  originWordsArray.forEach(function(word){
-    console.log(checkFirstLetter(word));
-  });
+  var originWords = original.split(" ");
+  for(var index = 0; index < originWords.length; index++)
+  {
+    originWords[index] = modifyWord(originWords[index]);
+  }
+  var output = originWords.join(" ");
+  return output;
+}
+
+function modifyWord(word)
+{
+  //var originlength = word.length;
+  if(isVowel(word.charAt(0)))
+  {
+    return (word += "way");
+  }
+  else {
+    return word;
+  }
 }
 
 function isVowel(character)
 {
+  var vowels = ["a","e","i","o","u"];
   character = character.toLowerCase();
-  var bool = (compareTo(character,"a")  || compareTo(character,"e") || compareTo(character,"i") || compareTo(character,"o") || compareTo(character,"u"));
-  return bool;
-
+  var boolIsVowel = false;
+  vowels.forEach(function(vowel){
+    if(character === vowel)
+    {
+      boolIsVowel = true;
+    }
+  });
+  return boolIsVowel;
 }
 
-//Exists so there is no mistake with = sign makes sure your using three =.
-function compareTo(one,two)
+function isY(character)
 {
-  return (one===two);
+  character = character.toLowerCase();
+  return (character === "y");
 }
 
-function checkFirstLetter(original)
+function isConsonant(character)
 {
-  var originlength = original.length;
-  //return original.charAt(0);
-  if(isVowel(original.charAt(0)))
-  {
-    return "vowel";
-  }
-  else {
-    return original;
-  }
+  return (!isVowel(character));
 }
