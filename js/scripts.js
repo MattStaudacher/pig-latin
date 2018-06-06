@@ -13,16 +13,10 @@ function outputAnswer(tempString)
 
 function translatePigLatin(original)
 {
-  originlength = original.length;
-  //return original.charAt(0);
-  if(isVowel(original.charAt(0)))
-  {
-    return "vowel";
-  }
-  else {
-    return original;
-  }
-
+  var originWordsArray = original.split(" ");
+  originWordsArray.forEach(function(word){
+    console.log(checkFirstLetter(word));
+  });
 }
 
 function isVowel(character)
@@ -33,7 +27,21 @@ function isVowel(character)
 
 }
 
+//Exists so there is no mistake with = sign makes sure your using three =.
 function compareTo(one,two)
 {
   return (one===two);
+}
+
+function checkFirstLetter(original)
+{
+  var originlength = original.length;
+  //return original.charAt(0);
+  if(isVowel(original.charAt(0)))
+  {
+    return "vowel";
+  }
+  else {
+    return original;
+  }
 }
