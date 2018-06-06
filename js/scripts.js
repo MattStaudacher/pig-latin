@@ -24,7 +24,10 @@ function translatePigLatin(original)
   return output;
 }
 
-
+function stepConsonant(word)
+{
+  //var boolIsY = isY(word.charAt(0));
+}
 
 function stepVowel(word)
 {
@@ -32,7 +35,8 @@ function stepVowel(word)
   {
     return (word += "way");
   }
-  else {
+  else
+  {
     return word;
   }
 }

@@ -32,9 +32,9 @@ For words beginning with "y", treat "y" as a consonant.
 ## Specifications Outline:
 
 1. if word begins with vowel append "way" to the end of the word
-2. Check if word begins with a "y" and if so treat the "y" as if it is a consonant (include check with step 3)
-3. If word begins with 1 or more consonant move all consecutive consonants to the end and append "ay"
+2. If word begins with 1 or more consonant move all consecutive consonants to the end and append "ay"
   1. if firsts consonants include "qu" move "u" with the "q"
+  2. Check for y in the word when looking for vowels as a stopping point.
 
   To get you started, below are the first two "plain English" specs:
 
