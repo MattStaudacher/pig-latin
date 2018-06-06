@@ -9,4 +9,10 @@ body  {
 
 .modifier {
   padding: 8px;
+  background-color: lightblue;
+}
+
+.input-modifier {
+  width: 512px;
+  height: 24px;
 }
