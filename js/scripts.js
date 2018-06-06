@@ -21,22 +21,22 @@ function translatePigLatin(original)
     var word = originWords[index];
     var firstCharacter = word.charAt(0).toString();
     //console.log("Character: "+firstCharacter);
-    if(!isNaN(parseInt(firstCharacter)))
+    if(!isNaN(parseInt(firstCharacter)) || firstCharacter==="")
     {
-      //Must be a number
+      //Must be a number or empty string
       //Don't Change anything
-      // console.log("Number Branch: " + word);
+      console.log("Number Branch: " + word);
     }
     else if(isVowel(firstCharacter))
     {
       //Beginning character of word is a vowel run function stepVowel
-      // console.log("Vowel Branch: " + word);
+      console.log("Vowel Branch: " + word);
       word = stepVowel(word);
     }
     else
     {
       //Beginning character of word is a consonant run function stepConsonant
-      // console.log("Consonant Branch: " + word);
+      console.log("Consonant Branch: " + word);
       word = stepConsonant(word);
     }
     originWords[index] = word;
@@ -47,23 +47,36 @@ function translatePigLatin(original)
 
 function stepConsonant(word)
 {
+  var compareWord = word.toLowerCase();
+  var saveChar = "";
+
+  if(compareWord.charAt(0)==="q" && compareWord.charAt(1)==="u")
+  {
+    saveChar = word.charAt(1);
+    var tempWords = word.split("");
+    //replace u with a character that isn't a vowel
+    tempWords[1] = "b";
+    word = tempWords.join("");
+  }
 
   var vowel = findSeperationVowel(word);
-  console.log(vowel)
   var modifiedWords = word.split(vowel);
 
   var shiftCharacters = modifiedWords.shift();
+  //replace the b with a u if saveChar is not blank
+  if(saveChar != "")
+  {
+    var tempWords = shiftCharacters.split("");
+    //replace b with u.
+    tempWords[1] = "u";
+    shiftCharacters = tempWords.join("");
+  }
+
   modifiedWords.unshift(" ");
-  console.log(modifiedWords);
   var tempString = modifiedWords.pop();
-  console.log(modifiedWords);
   tempString += (shiftCharacters + "ay");
   modifiedWords.push(tempString);
-  console.log(modifiedWords);
-
-
   var modifiedWord = modifiedWords.join(vowel);
-  console.log(modifiedWord);
   return modifiedWord;
 }
 
@@ -103,10 +116,4 @@ function isVowel(character)
     }
   });
   return boolIsVowel;
-}
-
-function isY(character)
-{
-  character = character.toLowerCase();
-  return (character === "y");
 }
