@@ -18,7 +18,28 @@ function translatePigLatin(original)
   var originWords = original.split(" ");
   for(var index = 0; index < originWords.length; index++)
   {
-    originWords[index] = stepVowel(originWords[index]);
+    var word = originWords[index];
+    var firstCharacter = word.charAt(0).toString();
+    //console.log("Character: "+firstCharacter);
+    if(!isNaN(parseInt(firstCharacter)))
+    {
+      //Must be a number
+      //Don't Change anything
+      // console.log("Number Branch: " + word);
+    }
+    else if(isVowel(firstCharacter))
+    {
+      //Beginning character of word is a vowel run function stepVowel
+      // console.log("Vowel Branch: " + word);
+      word = stepVowel(word);
+    }
+    else
+    {
+      //Beginning character of word is a consonant run function stepConsonant
+      // console.log("Consonant Branch: " + word);
+      word = stepConsonant(word);
+    }
+    originWords[index] = word;
   }
   var output = originWords.join(" ");
   return output;
@@ -27,41 +48,35 @@ function translatePigLatin(original)
 function stepConsonant(word)
 {
   //var boolIsY = isY(word.charAt(0));
-
-
-  if(isConsonant(word.charAt(0)))
-  {
-    var wordLength = word.length;
-    var vowels = ["a","e","i","o","u","y"];
-    character = character.toLowerCase();
-    var seperator = wordLength;
-    var charaterSeperator = "";
-    vowels.forEach(function(vowel)
-    {
-      var index = word.indexOf(vowel);
-      if(index <= seperator)
-      {
-        seperator = index;
-        charaterSeperator = vowel;
-      }
-    });
-  }
-  else
-  {
-    return word;
-  }
+  var vowel = findSeperationVowel(word);
+  console.log(vowel)
+  var modifiedWords = word.split(vowel);
+  console.log(modifiedWords);
+  return word;
 }
+
 
 function stepVowel(word)
 {
-  if(isVowel(word.charAt(0)))
+  return (word += "way");
+}
+
+function findSeperationVowel(word)
+{
+  var vowels = ["a","e","i","o","u","y","A","E","I","O","U","Y"];
+  //character = character.toLowerCase();
+  var seperator = word.length;
+  var charaterSeperator = "";
+  vowels.forEach(function(vowel)
   {
-    return (word += "way");
-  }
-  else
-  {
-    return word;
-  }
+    var index = word.indexOf(vowel);
+    if(index <= seperator && (index != -1))
+    {
+      seperator = index;
+      charaterSeperator = vowel;
+    }
+  });
+  return charaterSeperator;
 }
 
 function isVowel(character)
@@ -82,9 +97,4 @@ function isY(character)
 {
   character = character.toLowerCase();
   return (character === "y");
-}
-
-function isConsonant(character)
-{
-  return (!isVowel(character));
 }
